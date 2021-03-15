@@ -13,13 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Splash Screen',
-      theme: ThemeData(
 
 
-        primarySwatch: Colors.green,
-
-      ),
       home: MyHomePage(),
     );
   }
@@ -35,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     //set time to load the new page
-    Future.delayed(Duration(seconds: 6), () {
+    Future.delayed(Duration(seconds: 10), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Menu()));
     });
@@ -53,14 +48,28 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-                height: 300,
-                width: 300,
-                child: Lottie.asset('assets/splashback.json')),
-            SizedBox(height: 20),
+
+                height: 500,
+                width: 600,
+                child: Lottie.asset('assets/splashback.json'),),
+            SizedBox(height: 10),
             Text(
-              "Dodo",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              "Image To PDF Converter",
+
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold,color: Colors.red),
             ),
+
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+
+                "Develope By Ramim Hossain ",
+
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color: Colors.black),
+              ),
+            ),
+
           ],
         ),
       ),

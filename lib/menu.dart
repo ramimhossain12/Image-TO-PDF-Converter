@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_to_pdf/about.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -25,19 +26,44 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
 
+
       appBar: AppBar(
-        title: Text("Image To PDF"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Image To ",
+              style: TextStyle(color: Colors.red,),
+            ),
+            Text(
+              "PDF Converter",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+
         actions: [
           IconButton(
               icon: Icon(Icons.picture_as_pdf),
               onPressed: () {
                 createPDF();
                 savePDF();
+              }),
+          IconButton(
+              icon: Icon(Icons.account_circle_rounded),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => About()),
+                );
               })
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_circle_up,),
+        backgroundColor: Colors.black,
+        child: Icon(Icons.add_photo_alternate_rounded,color: Colors.white,),
         onPressed: getImageFromGallery,
       ),
       body: _image != null
@@ -93,7 +119,8 @@ class _MenuState extends State<Menu> {
       duration: Duration(seconds: 3),
       icon: Icon(
         Icons.info,
-        color: Colors.blue,
+
+        color: Colors.blueAccent,
       ),
     )..show(context);
   }
