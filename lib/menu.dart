@@ -5,6 +5,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_to_pdf/about.dart';
+import 'package:image_to_pdf/camera.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -33,11 +34,11 @@ class _MenuState extends State<Menu> {
           children: [
             Text(
               "Image To ",
-              style: TextStyle(color: Colors.red,),
+              style: TextStyle(color: Colors.red,fontSize: 27),
             ),
             Text(
               "PDF Converter",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white,fontSize: 13),
             ),
           ],
         ),
@@ -51,6 +52,17 @@ class _MenuState extends State<Menu> {
                 createPDF();
                 savePDF();
               }),
+
+
+          IconButton(
+              icon: Icon(Icons.camera_alt),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Camera()),
+                );
+              }),
+
           IconButton(
               icon: Icon(Icons.account_circle_rounded),
               onPressed: () {
@@ -58,7 +70,7 @@ class _MenuState extends State<Menu> {
                   context,
                   MaterialPageRoute(builder: (context) => About()),
                 );
-              })
+              }),
         ],
       ),
       floatingActionButton: FloatingActionButton(
